@@ -1,0 +1,24 @@
+#!/bin/sh
+if [ ! -f $1 ]; then
+	echo "File not found"
+else
+	if [[ $1 == *.tar.gz ]]; then
+		tar -zxvf $1
+	elif [[ $1 == *.tar.bz2 ]]; then
+		tar xvjf $1
+	elif [[ $1 == *.tar.lzma ]]; then
+		tar -xvJf $1
+	elif [[ $1 == *.tar ]]; then
+		tar -xvf $1
+	elif [[ $1 == *.gz ]]; then
+		gunzip $1
+	elif [[ $1 == *.gz2 ]]; then
+		bunzip2 $1
+	elif [[ $1 == *.xz ]]; then
+		xz -d $1
+	elif [[ $1 == *.zip ]]; then
+		unzip $1
+	elif [[ $1 == *.rar ]]; then
+		unrar $1
+	fi
+fi
